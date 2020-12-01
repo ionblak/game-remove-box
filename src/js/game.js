@@ -12,8 +12,8 @@ const refs = {
   recordsList: document.querySelector('.list'),
 };
 let playingGame = false;
-let time = 10000;
-let totalPoints = null;
+let time = 60000;
+let totalPoints = 0;
 let name = '';
 
 refs.startButton.addEventListener('click', startGame);
@@ -33,10 +33,14 @@ function clickDestroyBoxes(event) {
 }
 
 function startGame() {
-  playingGame = true;
-  createBoxes();
-  startTimer();
-  return;
+  if (playingGame) {
+    refs.startButton.setAttribute('disabled', 'true');
+  } else {
+    playingGame = true;
+    refs.startButton.removeAttribute('disabled');
+    createBoxes();
+    startTimer();
+  }
 }
 
 function startTimer() {
