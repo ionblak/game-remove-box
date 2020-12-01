@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>game-remove-box</title>
+  </head>
+  <body>
+    <header class="d-flex bd-highlight container">
+      <h1 class="p-2 w-100 bd-highlight">Game Remove Box</h1>
+      <div class="p-2 flex-shrink-1 bd-highlight">
+        <h2>Ruls</h2>
+      </div>
+    </header>
+    <section class="container align-items-center d-flex justify-content-start">
+      <div class="d-flex">
+          <div class="button-container-1">
+            <span class="mas">Start</span>
+            <button class="js-startButton" id='work' type="button" name="Hover">Start</button>
+          </div>
+        
+          <div class="button-container-1 button-game">
+            <span class="mas">New Game</span>
+            <button id='work' type="button" name="Hover">New Game</button>
+          </div>
+
+          <div class="block-points">
+            <h2>Points</h2>
+            <div class="border border-dar js-points">0</div>
+          </div>
+          <div>
+            <h2>Time Left</h2>
+            <div class="border border-dar timer">01:00</div>
+          </div>
+          
+          
+      </div>
+      <!-- window game -->
+    </section>
+   
+      <section class="container d-flex justify-content-between"> 
+        <div class="window-game bg-light border border-secondary"></div>
+        <div class="border border-secondary bg-secondary">
+          <h2>Result Table</h2>
+          <ul class="list"></ul>
+        </div>
+      </section>
+
+      <div class="lightbox js-lightbox lightbox__overlay">
+  
+        <div class="lightbox__content rounded">
+          <h2 class="modal-titel">You score : <span class="modal-points">213</span></h2>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="button-container-1 modal-button">
+            <span class="mas">Save</span>
+            <button class="js-modal__button" id='work' type="submit" name="Hover">Save</button>
+          </div>
+        </div>
+      
+       
+      </div>
+   
+   
+  </body>
+</html>
