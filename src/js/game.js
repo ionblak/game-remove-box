@@ -1,17 +1,5 @@
-import { getRandomIntInclusive, getRandColor } from './utils.js';
-
-const refs = {
-  startButton: document.querySelector('.js-startButton'),
-  veiwPort: document.querySelector('.window-game'),
-  timer: document.querySelector('.timer'),
-  modal: document.querySelector('.lightbox'),
-  saveButton: document.querySelector('.js-modal__button'),
-  points: document.querySelector('.js-points'),
-  modalPointsField: document.querySelector('.modal-points'),
-  modalInput: document.querySelector('.form-control'),
-  recordsList: document.querySelector('.list'),
-  newGamebutton: document.querySelector('.js-newGameButton'),
-};
+import { getRandomIntInclusive, getRandColor, refs } from './utils.js';
+import { getCurrentResult, loadingResult } from './storage.js';
 
 let playingGame = false;
 let time = 60000;
@@ -23,6 +11,8 @@ refs.startButton.addEventListener('click', startGame);
 refs.veiwPort.addEventListener('click', clickDestroyBoxes);
 refs.saveButton.addEventListener('click', savePoints);
 refs.newGamebutton.addEventListener('click', begingNewGame);
+
+loadingResult();
 
 function clickDestroyBoxes(event) {
   if (event.target === event.currentTarget) {
@@ -69,9 +59,7 @@ function begingNewGame() {
     totalPoints = 0;
     startTimer(time);
     createBoxes();
-    console.log(timerId);
   }
-
   startGame();
 }
 
@@ -86,8 +74,9 @@ function savePoints(event) {
   refs.modal.classList.remove('is-open');
   refs.recordsList.insertAdjacentHTML(
     'beforeend',
-    `<li class="list-item">${name}..........${totalPoints} points</li>`,
+    `<li class="list-item">${name}........${totalPoints} points</li>`,
   );
+  getCurrentResult(name, totalPoints);
   event.preventDefault();
 }
 
