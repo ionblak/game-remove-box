@@ -10,15 +10,19 @@ const refs = {
   modalPointsField: document.querySelector('.modal-points'),
   modalInput: document.querySelector('.form-control'),
   recordsList: document.querySelector('.list'),
+  newGamebutton: document.querySelector('.js-newGameButton'),
 };
+
 let playingGame = false;
 let time = 60000;
 let totalPoints = 0;
 let name = '';
+let timerId;
 
 refs.startButton.addEventListener('click', startGame);
 refs.veiwPort.addEventListener('click', clickDestroyBoxes);
 refs.saveButton.addEventListener('click', savePoints);
+refs.newGamebutton.addEventListener('click', begingNewGame);
 
 function clickDestroyBoxes(event) {
   if (event.target === event.currentTarget) {
@@ -36,15 +40,16 @@ function startGame() {
   if (playingGame) {
     refs.startButton.setAttribute('disabled', 'true');
   } else {
+    time = 60000;
     playingGame = true;
     refs.startButton.removeAttribute('disabled');
     createBoxes();
-    startTimer();
+    startTimer(time);
   }
 }
 
-function startTimer() {
-  const timerId = setInterval(() => {
+function startTimer(time) {
+  timerId = setInterval(() => {
     time -= 1000;
     refs.timer.textContent = time / 1000;
     if (time === 0) {
@@ -52,6 +57,22 @@ function startTimer() {
       openModal();
     }
   }, 1000);
+}
+
+function begingNewGame() {
+  if (playingGame) {
+    clearAllboxes();
+    clearInterval(timerId);
+    refs.points.textContent = 0;
+    refs.timer.textContent = '01:00';
+    time = 60000;
+    totalPoints = 0;
+    startTimer(time);
+    createBoxes();
+    console.log(timerId);
+  }
+
+  startGame();
 }
 
 function openModal() {
