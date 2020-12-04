@@ -21,7 +21,7 @@ function loadingResult() {
       `<li class="list-item">${parsedresult.name}........${parsedresult.totalPoints} points</li>`,
     );
   } catch (err) {
-    console.log('Set state error: ', err);
+    console.error('Set state error: ', err);
   }
 }
 
