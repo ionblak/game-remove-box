@@ -98,7 +98,5 @@ function createBoxes() {
 }
 
 function clearAllboxes() {
-  while (refs.veiwPort.firstChild) {
-    refs.veiwPort.firstChild.remove();
-  }
+  refs.veiwPort.innerHTML = '';
 }
